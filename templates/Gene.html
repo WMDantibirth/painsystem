@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Gene{% endblock %}
+
+{% block page_content %}
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <script src="{{ url_for('static', filename='echarts.min.js') }}"></script>
+
+</head>
+    <style type="text/css">
+       /* gridtable */
+       table.gridtable {
+           font-family: verdana,arial,sans-serif;
+           font-size:11px;
+           color:#333333;
+           border-width: 1px;
+          border-color: #666666;
+          border-collapse: collapse;
+      }
+      table.gridtable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #666666;
+         background-color: #dedede;
+      }
+      table.gridtable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #666666;
+          background-color: #ffffff;
+      }
+      /* /gridtable */
+
+      /* imagetable */
+      table.imagetable {
+          font-family: verdana,arial,sans-serif;
+          font-size:11px;
+          color:#333333;
+          border-width: 1px;
+          border-color: #999999;
+          border-collapse: collapse;
+      }
+      table.imagetable th {
+          background:#b5cfd2 url('cell-blue.jpg');
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #999999;
+      }
+      table.imagetable td {
+          background:#dcddc0 url('cell-grey.jpg');
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #999999;
+      }
+      /* /imagetable */
+      /* altrowstable */
+
+      table.altrowstable {
+          font-family: verdana,arial,sans-serif;
+          font-size:11px;
+          color:#333333;
+          border-width: 1px;
+          border-color: #a9c6c9;
+          border-collapse: collapse;
+      }
+      table.altrowstable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #a9c6c9;
+      }
+      table.altrowstable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #a9c6c9;
+      }
+      .oddrowcolor{
+          background-color:#d4e3e5;
+      }
+      .evenrowcolor{
+          background-color:#c3dde0;
+      }
+      /* /altrowstable */
+
+      /* hovertable */
+      table.hovertable {
+          font-family: verdana,arial,sans-serif;
+          font-size:11px;
+          color:#333333;
+          border-width: 1px;
+          border-color: #999999;
+          border-collapse: collapse;
+      }
+      table.hovertable th {
+          background-color:#c3dde0;
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+         border-color: #a9c6c9;
+     }
+     table.hovertable tr {
+         background-color:#d4e3e5;
+     }
+     table.hovertable td {
+         border-width: 1px;
+         padding: 8px;
+         border-style: solid;
+         border-color: #a9c6c9;
+     }
+     /* /hovertable */
+
+     </style>
+
+    <h3 style="background: #FF9966;margin-bottom: 30px;">Gene</h3>
+
+     <p></p>
+<button><a href="#chart" >See the chart</a></button>
+    <div>
+        <table class="gridtable">
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <th>Loci</th> <th>Variants</th>  <th>Alleles</th> <th>Phenotype</th> <th>Description</th>
+                {% for hpgdb_item in hpgdb_info_list %}
+                    <tr>
+                        <td><u>{{ hpgdb_item[0] }}</u></td>
+                        <td><a href="gene_info?num={{hpgdb_item[6]}}"><u>{{hpgdb_item[1]}}</u></a></td>
+                        <td>{{hpgdb_item[2]}}</td>
+                        <td>{{hpgdb_item[3]}}</td>
+                        <td>{{hpgdb_item[5]}}</td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+
+    </div>
+
+<div style="float:left;width:60%;height:300px;margin-left:5%;margin-right:5%;margin-bottom:20px;margin-top:10px;font-size:17px;">
+<!--<div id="main1" style="width: 800px;height:500px;margin: 0 auto;"></div>-->
+<div id="main3" style="width: 800px;height:500px;margin: 0 auto;"></div>
+
+<script type="text/javascript">
+
+    // 基于准备好的dom，初始化echarts实例
+    <!--var myChart1 = echarts.init(document.getElementById('main1'));-->
+    var myChart3 = echarts.init(document.getElementById('main3'));
+
+    // 指定图表的配置项和数据
+        var option1 = {
+            title: {
+                text: ''
+            },
+            tooltip: {},
+            legend: {
+                data:['contains']
+            },
+            xAxis: {
+                data: ["Drug","Target","Side Effect","Pathway","Disease","Gene"]
+            },
+            yAxis: {},
+            series: [{
+                name: 'Contains',
+                type: 'bar',
+                data: [1, 2, 3, 4,5, 6]
+            }]
+        };
+
+
+        var   option3 = {
+            title : {
+                text: '',
+                subtext: '',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data:["Migraine","Fibromyalgia","Temporomandibular Disorder","Neuraxial Pain","Musculoskeletal Pain",
+                    "Cancer Pain","Post-operative Pain","Nociception","Analgesia","Neuropathic Pain","Other Clinical Pain"]
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1548
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'Contains',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:{{pain_list["Migraine"]}}, name:"Migraine"},
+                        {value:{{pain_list["Fibromyalgia"]}}, name:"Fibromyalgia"},
+                        {value:{{pain_list["Temporomandibular Disorder"]}}, name:"Temporomandibular Disorder"},
+                        {value:{{pain_list["Neuraxial Pain"]}}, name:"Neuraxial Pain"},
+                        {value:{{pain_list["Musculoskeletal Pain"]}}, name:"Musculoskeletal Pain"},
+                        {value:{{pain_list["Cancer Pain"]}}, name:"Cancer Pain"},
+                        {value:{{pain_list["Post-operative Pain"]}}, name:"Post-operative Pain"},
+                        {value:{{pain_list["Nociception"]}}, name:"Nociception"},
+                        {value:{{pain_list["Analgesia"]}}, name:"Analgesia"},
+                        {value:{{pain_list["Neuropathic Pain"]}}, name:"Neuropathic Pain"},
+                        {value:{{pain_list["Other Clinical Pain"]}}, name:"Other Clinical Pain"}
+
+                    ]
+                }
+            ]
+        };
+
+
+
+
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    <!--myChart1.setOption(option1);-->
+    myChart3.setOption(option3);
+</script>
+    </div>
+<div id="chart"></div>
+{% endblock %}

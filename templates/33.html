@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Gene{% endblock %}
+{% block page_content %}
+<table border="0"><tbody><tr valign="top"><td><table id="RefSNP" cellpadding="2" width="350"><tbody><tr><th class="text10" bgcolor="#ccccff" align="center" colspan="2">RefSNP</th></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Organism:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1">horse (<em>Equus caballus</em>)</td></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Molecule Type:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1">Genomic</td></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Created/Updated in build:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1">151/151</td></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Map to Genome Build:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1">102/<a title="dbSNP Mapping Weight (1=unique position)" href="/books/NBK44455/#Build.Mapping_Weight">Weight 1</a></td></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Validation Status:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1"> </td></tr></tbody></table></td><td><table id="Allele" cellpadding="2" width="350"><tbody><tr><th class="text10" bgcolor="#ccccff" align="center" colspan="2">Allele</th></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Variation Class:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1">SNV:<br> single nucleotide variation</td></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>RefSNP Alleles:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1">C/G (<span title="rs1138556413 alleles are reported in forward orientation to genome">FWD</span>)</td></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Allele Origin:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1"> </td></tr><tr><td class="text10" bgcolor="#f1f1f1" align="right"><strong>Ancestral Allele:</strong></td><td class="text10" style="text-align:left;background-color:#f1f1f1">Not available</td></tr></tbody></table></td><td></td><td><table><tbody><tr><td><ul style="display:none" id="link_popup_menu">
+    <li><span>Links</span>
+    <ul>
+    <li>EntrezSNP</li>
+    <li>Probe</li>
+    <li>Ensembl</li>
+    <li>UC Santa Cruz</li>
+    
+    </ul>
+</li></ul>
+Links
+</td><td></td></tr></tbody></table></td></tr></tbody></table>
+
+<table id="Submission"><tbody><tr><th bgcolor="silver">NCBI<br>Assay ID</th><th bgcolor="silver">Handle|Submitter ID</th><th bgcolor="silver">Validation<br>Status</th><th bgcolor="silver">ss to rs<br>Orientation<br>/Strand</th><th bgcolor="silver">Alleles</th><th bgcolor="silver">5' Near Seq 30 bp</th><th bgcolor="silver">3' Near Seq 30 bp</th><th bgcolor="silver">Entry<br>Date</th><th bgcolor="silver">Update<br>Date</th><th bgcolor="silver">Build<br>Added</th><th bgcolor="silver">Molecule<br>Type</th><th bgcolor="silver">Freq<br>Warning</th><th bgcolor="silver">Ancestral<br>Allele</th><th bgcolor="silver">Success<br>Rate</th></tr><tr style="text-align:left"><td><strong>ss3044645339</strong></td><td>EGGL|6.75280695C&gt;G</td><td></td><td>fwd/</td><td>C/G</td><td><span face="courier" size="-2">accacggatttgggagccttgggga</span></td><td><span face="courier" size="-2">ccgcgcggagtaagcatcccttgtt</span></td><td>08/30/17</td><td>08/30/17</td><td>151</td><td>Genomic</td><td></td><td></td><td>unknown</td></tr></tbody></table>
+{% endblock %}

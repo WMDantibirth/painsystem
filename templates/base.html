@@ -1,0 +1,111 @@
+{% extends "bootstrap/base.html"  %}
+{% block title %}Flask{% endblock %}
+{% block navbar %}
+<html>
+
+  <head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PainSystem</title>
+      <style>
+		a,a:link,a:visited,a:focus{text-decoration:none;
+		color: #858585;
+		}.center-to-head{position:relative;
+		}.center-to-head::after{content:'';
+		display:block;
+		height:3px;
+		position:absolute;
+		bottom:-1px;
+		background: #858585;
+		transition:all 0.3s ease-in-out;
+
+		transform: scale3d(0,1,1);
+		transform-origin:50% 0;}.center-to-head:hover::after{transform:scale3d(1,1,1);}
+	  </style>
+	      <script type="{{ url_for('static', filename='jquery-3.2.1.js') }}" ></script>
+    <style type="text/css">
+        #scroll{
+        position: fixed;
+        top: 80%;
+        left: 80%;
+        }
+        #test{
+        position: fixed;
+        top: 85%;
+        left: 80%;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function returnTop(){
+            $('body,html').animate({scrollTop:0},1000);}
+    </script>
+
+  </head>
+  <body>
+
+	<header id="mu-header" class="" role="banner">
+		<div class="container">
+			<nav class="navbar navbar-default mu-navbar">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+
+		      <!-- Text Logo -->
+
+
+		      <!-- Image Logo -->
+			<li><img src="/static/pic_index/logo.jpg" style="width: 50px;height: 50px;margin-right: 40px;"></li>
+
+
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      	<ul class="nav navbar-nav mu-menu navbar-right">
+
+			        <li style="font-size: 18px;" class="center-to-head"><a href="/">Home</a></li>
+			        <li style="font-size: 18px;" class="center-to-head"><a href="/drug">Drug</a></li>
+			        <li style="font-size: 18px;" class="center-to-head"><a href="/targets">Target</a></li>
+		            <li style="font-size: 18px;" class="center-to-head"><a href="/sideeffects">Side_Effect</a></li>
+		            <li style="font-size: 18px;" class="center-to-head"><a href="/pathway">Pathway</a></li>
+		            <li style="font-size: 18px;" class="center-to-head"><a href="/Disease">Disease</a></li>
+                    <li style="font-size: 18px;" class="center-to-head"><a href="/Gene">Gene</a></li>
+                    <li style="font-size: 18px;" class="center-to-head"><a href="/Help">Help</a></li>
+                    <li>
+
+                    <div class="searchbar" style="margin-top: 10px;">
+                        <form action="/search" method="POST" style="">
+                            <input type="text" name="username">
+                            <input type="submit" value="search" style="background: #FF9966;border-radius: 5px;" >
+                        </form>
+                    </div>
+
+                </li>
+		      	</ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		</div>
+	</header>
+<input type="button" value="Top" onclick="returnTop()" id="scroll" />
+
+  </body>
+</html>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+{% block page_content %}{% endblock %}
+</div>
+{% endblock %}

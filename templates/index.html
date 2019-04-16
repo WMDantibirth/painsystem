@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}pain system{% endblock %}
+
+{% block page_content %}
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <script src="{{ url_for('static', filename='echarts.min.js') }}"></script>
+
+</head>
+
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <div style="width: 400px;height: 300px;margin-top: 50px;margin-left: 200px;">
+                    <p style="font-size:18px;text-align: justify;text-justify:inter-ideograph;"> <span style="font-weight:bold;font-size:25px;">P</span>
+        ain is a complex, subjective phenomenon, which is regarded as an unpleasant sensory and emotional experience associated with actual or potential tissue damage, or described in terms of such damage. Human Pain Database is designed to provide a comprehensive information about the pain disease, pathway, drug, and other information. We believe the database will help researchers to obtain the pain information that they need.
+        </p>
+        </div>
+                </td>
+                <td>
+                    <div style="margin-left: 80px;">
+                <img src="/static/pic_index/DB00122.svg"; style="width: 250px;height: 250px;margin-right: 200px;">
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div style="float:left;width:60%;height:300px;margin-left:5%;margin-right:5%;margin-bottom:20px;margin-top:10px;font-size:17px;">
+<!--<div id="main1" style="width: 800px;height:500px;margin: 0 auto;"></div>-->
+<div id="main3" style="width: 800px;height:500px;margin: 0 auto;"></div>
+
+<script type="text/javascript">
+
+    // 基于准备好的dom，初始化echarts实例
+    <!--var myChart1 = echarts.init(document.getElementById('main1'));-->
+    var myChart3 = echarts.init(document.getElementById('main3'));
+
+    // 指定图表的配置项和数据
+        var option1 = {
+            title: {
+                text: ''
+            },
+            tooltip: {},
+            legend: {
+                data:['contains']
+            },
+            xAxis: {
+                data: ["Drug","Target","Side Effect","Pathway","Disease","Gene"]
+            },
+            yAxis: {},
+            series: [{
+                name: 'Contains',
+                type: 'bar',
+                data: [{{drug}}, {{target}}, {{side_effect}}, {{pathway}}, {{disease}}, {{gene}}]
+            }]
+        };
+
+
+        var   option3 = {
+            title : {
+                text: '',
+                subtext: '',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data:["Drug","Target","Side Effect","Pathway","Disease","Gene"]
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1548
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'Contains',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:{{drug}}, name:'Drug'},
+                        {value:{{target}}, name:'Target'},
+                        {value:{{side_effect}}, name:'Side Effect'},
+                        {value:{{pathway}}, name:'Pathway'},
+                        {value:{{disease}}, name:'Disease'},
+                        {value:{{gene}}, name:'Gene'}
+                    ]
+                }
+            ]
+        };
+
+
+
+
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    <!--myChart1.setOption(option1);-->
+    myChart3.setOption(option3);
+</script>
+    </div>
+
+    
+{% endblock %}
